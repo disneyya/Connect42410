@@ -10,12 +10,13 @@ namespace Connect4
     {
         Player myPlayer = new Player();
         Token myToken = new Token();
+        GameMaster myGameMaster = new GameMaster();
         int size = 10;
         int rowsTillBoard = 4;
         int spacesInBetweenBoard = 10;
         int spacesBeforeBeginingBoard = 5;
         int beginingTokenForDrop = 2; 
-        String[,] board =
+        public static String[,] board =
         {
 
             {"*","*","*","*","*","*","*"},
@@ -50,8 +51,9 @@ namespace Connect4
                     board[i, columnNumber - 1] = playerID;
 
                     Thread.Sleep(150);
+                    Console.BackgroundColor = ConsoleColor.Black;
                     Console.SetCursorPosition(spacesBeforeBeginingBoard + (columnNumber - 1) * spacesInBetweenBoard, (beginingTokenForDrop));//setsCursor to end of array prints off playerId whos turn it is
-
+                                        
                     Thread.Sleep(150);
                     Console.SetCursorPosition(spacesBeforeBeginingBoard + (columnNumber - 1) * spacesInBetweenBoard, (i + rowsTillBoard));//setsCursor to end of array prints off playerId whos turn it is
                     myToken.drawToken(playerID);//calls drawToken method in Token.cs
@@ -60,11 +62,11 @@ namespace Connect4
                     Console.ForegroundColor = ConsoleColor.White;//sets text color to white
                     Console.SetCursorPosition(leftCurserPosition, topCurserPosition - 2); // draws over text
 
+                    
+                    
                     return;
 
                 }
-
-
 
             }
 
@@ -85,10 +87,12 @@ namespace Connect4
                 {
                     Console.BackgroundColor = ConsoleColor.Blue;//sets lines in between rows to blue
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write("|"); // creates lines in between rows
                     Console.Write("-");//for extra spacing
+                    Console.Write("|"); // creates lines in between rows
+                    
                     if (board[i, j] == "*")
                     {
+                        
                         Console.BackgroundColor = ConsoleColor.Black;//sets backGround of * in array to black
                         Console.ForegroundColor = ConsoleColor.Black;
                     }
@@ -107,7 +111,5 @@ namespace Connect4
             Console.BackgroundColor = ConsoleColor.Black;//sets text back to white and black
             Console.ForegroundColor = ConsoleColor.White;
         }
-
-
     }
 }

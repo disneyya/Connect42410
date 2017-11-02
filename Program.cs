@@ -17,8 +17,6 @@ namespace Connect4
             GameMaster myGameMaster = new GameMaster();
             int win;
 
-            Console.SetWindowSize(75, 45);
-
             myBoard.displayTitle();
             myBoard.displayBoard();
 
@@ -39,7 +37,7 @@ namespace Connect4
                     try
                     {
                         dropChoice = Convert.ToInt32(Console.ReadLine());
-                        myBoard.UpdateBoard(firstPlayer.playerID, dropChoice);
+                        
 
                     }
                     catch (Exception)
@@ -48,6 +46,8 @@ namespace Connect4
                         Console.WriteLine();
                         
                     }
+                    myBoard.UpdateBoard(firstPlayer.playerID, dropChoice);
+                    myGameMaster.CheckFour(Board.board, firstPlayer);
 
 
                 }
